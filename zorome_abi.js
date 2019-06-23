@@ -1,4 +1,4 @@
-var zorome_abi = [
+var zoromeABI = [
 	{
 		"constant": false,
 		"inputs": [
