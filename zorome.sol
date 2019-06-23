@@ -1,4 +1,3 @@
-
 // Copyright (c) 2019 NandemoToken
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -13,6 +12,11 @@ import "github.com/OpenZeppelin/openzeppelin-solidity/contracts/token/ERC20/ERC2
 contract Zorome is ERC20, ERC20Detailed , ERC20Burnable{
 
 bool dummy_for_debug;
+uint playernuber = 0;
+mapping(uint => address) playeraddress;
+mapping(address => uint) score;
+mapping(address => string) playername;
+
 
         constructor()   ERC20Detailed("Zorome", "ZORO", 0) public {
             dummy_for_debug = true;
@@ -79,7 +83,34 @@ bool dummy_for_debug;
             }
         }
 
-         function zoromeChallenge() public {
+        function playerRegistration() public{
+            playernuber = playernuber + 1;
+            playeraddress[playernuber] = msg.sender;
+        }
+
+        function getPlayerAddress(uint n) public view returns(address){
+            return playeraddress[n];
+        }
+
+        function myScoreRegistration() public{
+            playerRegistration();
+            score[msg.sender] = myScore();
+        }
+        
+        function getScores(uint n) public view returns(uint){
+            return score[getPlayerAddress(n)];
+        }
+
+        function nameRegistration(string memory name) public{
+            myScoreRegistration();
+            playername[msg.sender] = name;
+        }
+
+        function getName(uint n) public view returns(string memory){
+            return playername[getPlayerAddress(n)];
+        }
+
+        function zoromeChallenge() public {
              if( balanceOf(msg.sender) > 0 && isZorome() == 0 ){
              _burn(msg.sender, 1);
              }
