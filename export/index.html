@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>Zorome</title>
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css?h=9f7b174ae531f9cdd7a52b4235e1f19f">
+<link rel="stylesheet" href="assets/fonts/ionicons.min.css?h=0692f36eb27607e4837760bbbf813d92">
+<link rel="stylesheet" href="assets/css/styles.min.css?h=43cef0f5aed96f3c8a14106b301f3cc9">
+</head>
+
+<body>
+<!-- Start: Navigation Clean -->
+<div>
+<nav class="navbar navbar-light navbar-expand-md navigation-clean" style="background-color: #ff6534;">
+<div class="container"><a class="navbar-brand" href="#" style="font-size: 60px;">ZOROME!</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+<div
+class="collapse navbar-collapse" id="navcol-1">
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item" role="presentation"></li>
+<li class="nav-item" role="presentation"><a class="nav-link" href="ScoreRanking.html">Score Ranking</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" href="MyScore.html">My Score</a></li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+<!-- End: Navigation Clean -->
+<!-- Start: Login Form Clean -->
+<div class="login-clean" style="background-repeat: no-repeat;background-size: contain;background-position: left;background-color: rgb(249,228,225);">
+<!-- <form method="post"> -->
+<h2 class="sr-only">Login Form</h2>
+<div class="illustration"><img class="img-thumbnail" src="assets/img/201068.png?h=40c277f9fa9ecca9763f9777dc45000b"></div>
+<button class="btn btn-primary btn-block" type="submit" id="zoromeimg" style="margin-bottom: 50px;background-color: rgb(238,66,102);">Zorome Challenge!</button>
+<button class="btn btn-primary btn-block" type="submit" id="button_set" style="margin-bottom: 50px;background-color: rgb(238,66,102);">Score Check</button>
+<div class="form-group"><input class="form-control" type="password" name="yourname" placeholder="yourname"></div>
+<div class="form-group"><button class="btn btn-primary btn-block" id="scoreregist" type="submit" style="background-color: rgb(235,0,49);">score registration</button></div>
+<!-- </form> -->
+</div>
+<!-- End: Login Form Clean -->
+<!-- Start: Footer Basic -->
+<div class="footer-basic" style="background-color: #ff6534;color: rgb(36,37,38);">
+<footer>
+<!-- Start: Social Icons -->
+<div class="social"><a href="https://twitter.com/NandemoToken" target="_blank"><i class="icon ion-social-bitcoin"></i></a><a href="https://github.com/nandemotoken/Zorome" target="_blank"><i class="icon ion-social-octocat"></i></a><a href="https://twitter.com/NandemoToken"
+target="_blank"><i class="icon ion-social-twitter"></i></a><a href="https://www.facebook.com/nandemotoken" target="_blank"><i class="icon ion-social-facebook"></i></a></div>
+<!-- End: Social Icons -->
+<!-- Start: Links -->
+<ul class="list-inline">
+<li class="list-inline-item"></li>
+<li class="list-inline-item"></li>
+<li class="list-inline-item"><a href="https://blockscout.com/eth/ropsten/blocks" target="blank" >BlockExproler(RopstenTestnet)</a></li>
+<li class="list-inline-item"></li>
+<li class="list-inline-item"></li>
+</ul>
+<!-- End: Links -->
+<!-- Start: Copyright -->
+<p class="copyright" style="color: rgb(72,72,72);">Nandemotoken © 2019</p>
+<!-- End: Copyright -->
+</footer>
+</div>
+<!-- End: Footer Basic -->
+<script src="assets/js/jquery.min.js?h=1dd785e1de9a32e236b624ae268bb803"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js?h=63715b63ee49d5fe4844c2ecae071373"></script>
+<script src="zorome.js"></script>
+<script language="javascript" type="text/javascript" src="./web3.min.js"></script>
+<script language="javascript" type="text/javascript" src="./zorome_abi.js"></script>
+<script>
+window.addEventListener('load', function() {
+		var zorometoken;
+		var userAccount;
+		var addr = web3.eth.accounts[0]
+
+		function startApp() {
+		//コントラクト読込
+		//ここのアドレスを自分のコントラクトアドレスに書き換える
+		var zoromeAddress = "0xB97E271AF2D0BE27BdA5ab29550D636F31aC4018";
+		zorometoken = web3.eth.contract(zoromeABI).at(zoromeAddress);
+
+
+		//ユーザーの登録
+		web3.eth.getAccounts(function(err, accounts) {
+			console.log(accounts[0]);
+			userAccount = accounts[0];
+			});
+
+
+
+		//コントラクトから内容の取得
+		zorometoken.symbol.call({from: addr}, function(err, symbol) {
+				//ABI expects string here,
+				if(err) { console.log(err) }
+				console.log('Token symbol: ' + symbol)
+				})
+
+
+		document.getElementById("button_set").onclick = () => {
+			getAmount();
+		}
+
+		document.getElementById('zoromeimg').onclick = () =>{
+			zoromeChallenge();
+		}
+
+                document.getElementById('scoreregist').onclick = () =>{
+                        scoreRegist();
+                }
+
+
+		}
+
+
+function getAmount(){
+	return zorometoken.balanceOf.call( web3.eth.accounts[0]  , function(err, bal) {
+			if(err) { console.log(err) }
+			console.log('you have: ' + bal + 'zorome token')
+			alert("現在 " + bal + " ZOROトークンを持っています。" )
+			})
+
+}
+
+function zoromeChallenge() {
+	alert("Zoromeチャレンジを行います。\n参加料…1ゾロトークン(持ってなければ無料)\n下２桁一致…1ZOROトークン獲得\n下３桁一致…100ZOROトークン獲得\n下４桁一致…1000ZOROトークン獲得");
+	zorometoken.zoromeChallenge({ from:addr} , function (err , txHash) {
+			if(err) console.error(err)
+			if (txHash) {
+			console.log('Transaction sent')
+			console.dir(txHash)
+			}
+			});
+}
+
+function scoreRegist() {
+        alert("スコア登録は現在開発中です");
+<!--
+        zorometoken.zoromeChallenge({ from:addr} , function (err , txHash) {
+                        if(err) console.error(err)
+                        if (txHash) {
+                        console.log('Transaction sent')
+                        console.dir(txHash)
+                        }
+                        });
+-->
+}
+
+
+//MetaMaskがインストールされているかのチェック
+if (typeof web3 !== 'undefined') {
+	// メタマスクのWeb3のプロバイダを使用する。
+	web3js = new Web3(web3.currentProvider);
+	alert("イーサリアムウォレットを利用します");
+} else {
+	// メタマスクがインストールされていない場合、メタマスクのインストールを促す
+	alert("イーサリアムウォレットを導入してください(MetaMask等)");
+}
+
+// ユーザーのアプリ開始
+startApp()
+	})
+</script>
+
+</body>
+
+</html>
