@@ -36,7 +36,7 @@ Webサイト
 　　 Ethereum(RopstenTestnet)のブロックエクスプローラーを見て  
 　　『今トランザクションを送ったらゾロ目のブロックに入りそうな気がする！』  
 　　というタイミングでトランザクション送信のボタンを押しましょう。  
-　　　※おすすめのblockExproler 　　blockscout.com 　　etherscan.io  
+　　　※おすすめのblockExproler 　[blockscout.com] (https://blockscout.com/)　　[etherscan.io] (https://etherscan.io/)
   
   
 # よくある質問   
