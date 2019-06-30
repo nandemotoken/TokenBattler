@@ -4,7 +4,7 @@ Let's get Zorome
 Webサイト
 　http://www.zorome.online/index.html
 
-How to play  
+# How to play  
 　ZOROME!はトークンを集めるクソゲーです。   
   
 　プレイヤーはトランザクションを送り、それがゾロ目のブロック番号で処理されるとトークンがもらえます。   
