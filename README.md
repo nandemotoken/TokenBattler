@@ -1,5 +1,5 @@
 # Zorome
-let's get Zorome
+Let's get Zorome
 
 Webサイト
 　http://www.zorome.online/index.html
