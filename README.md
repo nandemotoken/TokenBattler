@@ -4,7 +4,7 @@ Let's get Zorome
 Webサイト
 　http://www.zorome.online/index.html
 
-# How to play  
+## How to play  
 　ZOROME!はトークンを集めるクソゲーです。   
   
 　プレイヤーはトランザクションを送り、それがゾロ目のブロック番号で処理されるとトークンがもらえます。   
@@ -22,7 +22,7 @@ Webサイト
 　　下４桁一致…1000ZOROトークン獲得  
 　　　※一致する桁数が増えるごとに10倍のZOROトークンがもらえます  
   
-# プレイ方法  
+## プレイ方法  
 　準備  
 　　Metamaskなどのweb3対応ウォレットをインストールし、EthereumのRopstenTestnetを指定してください。  
   
@@ -36,10 +36,10 @@ Webサイト
 　　 Ethereum(RopstenTestnet)のブロックエクスプローラーを見て  
 　　『今トランザクションを送ったらゾロ目のブロックに入りそうな気がする！』  
 　　というタイミングでトランザクション送信のボタンを押しましょう。  
-　　　※おすすめのblockExproler 　[blockscout](https://blockscout.com/)　　[etherscan](https://etherscan.io/)
+　　　※おすすめのblockExproler 　[blockscout](https://blockscout.com/)　　[etherscan](https://ropsten.etherscan.io/)
   
   
-# よくある質問   
+## よくある質問   
 　　Q. ゾロ目になったはずなのにイーサリアムのエラーが出てトークンがもらえませんでした。  
 　　A. 送信時のGas Limitを高めに再設定して挑戦してください。  
   
