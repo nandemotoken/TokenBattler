@@ -39,7 +39,7 @@ Webサイト
 　　　※おすすめのblockExproler 　　blockscout.com 　　etherscan.io  
   
   
-#　よくある質問   
+# よくある質問   
 　　Q. ゾロ目になったはずなのにイーサリアムのエラーが出てトークンがもらえませんでした。  
 　　A. 送信時のGas Limitを高めに再設定して挑戦してください。  
   
